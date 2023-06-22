@@ -1,6 +1,6 @@
 // Import des fonctions eventuelles depuis autre fichier JS pour plus de clarte
 import { genererProjets } from "./fonctions.js";
-// Récupération des photos depuis l'API
+// Récupération des PROJETS PHOTO depuis l'API
 const reponse = await fetch('http://localhost:5678/api/works');
 let projets = await reponse.json();
 console.log(projets)
@@ -19,8 +19,24 @@ btnObjets.addEventListener("click", function () {
         return projet.categoryId === 1
 
     });
-    console.log(projetsFiltres)
-    document.querySelector(".gallery").innerHTML = ""
+    genererProjets(projetsFiltres)
+})
+// Categorie APPARTS
+const btnApparts = document.getElementById("btn-apparts")
+btnApparts.addEventListener("click", function () {
+    const projetsFiltres = projets.filter(function (projet) {
+        return projet.categoryId === 2
+
+    });
+    genererProjets(projetsFiltres)
+})
+// Categorie APPARTS
+const btnHotels = document.getElementById("btn-hotels")
+btnHotels.addEventListener("click", function () {
+    const projetsFiltres = projets.filter(function (projet) {
+        return projet.categoryId === 3
+
+    });
     genererProjets(projetsFiltres)
 })
 
@@ -28,5 +44,5 @@ btnObjets.addEventListener("click", function () {
 const btnAll = document.getElementById("btn-tous")
 btnAll.addEventListener("click", function () {
     genererProjets(projets)
-}
-)
+})
+
