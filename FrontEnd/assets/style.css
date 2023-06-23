@@ -90,6 +90,7 @@ video {
 	font-size: 100%;
 	font: inherit;
 	vertical-align: baseline;
+	background-color: #fffef8;
 }
 
 /* HTML5 display-role reset for older browsers */
@@ -187,7 +188,17 @@ nav li {
 	font-size: 1.2em;
 }
 
+nav li a {
+	text-decoration: none;
+}
+
 li:hover {
+	color: #B1663C;
+}
+nav li a:visited {
+	color: black;
+}
+nav li a:hover {
 	color: #B1663C;
 }
 
@@ -223,6 +234,61 @@ li:hover {
 	margin-bottom: 1em;
 }
 
+#login-form h2 {
+	text-align: center;
+	margin-bottom: 1em;
+
+}
+
+#login-form .container {
+
+	display: flex;
+	flex-direction: column;
+	width: 379px;
+	margin-left: auto;
+	margin-right: auto;
+	align-content: space-between;
+	gap: 30px;
+}
+
+#login-form .container .champ {
+
+	display: flex;
+	flex-direction: column;
+	align-content: space-between;
+	gap: 10px;
+}
+
+#login-form .container .champ a {
+	margin-left: auto;
+	margin-right: auto;
+	color: rgba(61, 61, 61, 1);
+
+}
+
+input[type=email],
+input[type=password] {
+	width: 379px;
+	height: 51px;
+	border: 0px;
+	box-shadow: 0px 4px 14px -10px rgba(0, 0, 0, 0.9);
+}
+
+button[type=submit] {
+	width: 179px;
+	height: 36px;
+	border-radius: 60px;
+	background-color: #1D6154;
+	border: 0px;
+	color: white;
+	font-family: 'Syne';
+	font-weight: 700;
+	font-size: 14px;
+	line-height: 16.8px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
 .categories {
 	width: fit-content;
 	margin-left: auto;
@@ -234,15 +300,15 @@ li:hover {
 
 .categories button {
 	font-family: 'Syne';
-	weight: 700;
+	font-weight: 700;
 	font-size: 16px;
 	line-height: 19.2px;
 	height: 37px;
 	border-radius: 60px;
 	border-width: 1px;
-	border-color:#1D6154;
+	border-color: #1D6154;
 	color: #1D6154;
-	padding: 10px 20px 20px 20px; 
+	padding: 10px 20px 20px 20px;
 	background-color: transparent;
 
 }
