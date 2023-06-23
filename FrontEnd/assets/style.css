@@ -310,12 +310,14 @@ button[type=submit] {
 	color: #1D6154;
 	padding: 10px 20px 20px 20px;
 	background-color: transparent;
+	transition-duration: 700ms;
 
 }
 
 .categories button:hover {
 	color: aliceblue;
 	background-color: #1D6154;
+	transition-duration: 700ms;
 }
 
 .gallery {
