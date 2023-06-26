@@ -1,11 +1,14 @@
 //Essai de recuperation des mots de passes depuis le serveur
 
-const inputs = document.querySelectorAll("input");
+const fieldEmail = document.getElementById("email");
+const fieldPassword = document.getElementById("password");
 const loginSubmit = document.querySelector(".login-btn");
+const errorMessage = document.getElementById("error-message");
+let url = 'http://localhost:5678/api/users/login';
 
 function loginTry() {
-    const emailEntered = inputs[0].value;
-    const passwordEntered = inputs[1].value;
+    const inputEmail = fieldEmail.value;
+    const inputPassword = fieldPassword.value;
 
     let loginRequest = {
         method: "POST",
@@ -13,15 +16,37 @@ function loginTry() {
             "Content-type": "application/json"
         },
         body: JSON.stringify({
-            email: emailEntered,
-            password: passwordEntered,
+            email: inputEmail,
+            password: inputPassword,
         }),
 
+
     };
-    console.log(`email est ${emailEntered}`)
-    console.log(`passsword est ${passwordEntered}`)
-    console.log(loginRequest)
-    console.log(`email est ${emailEntered}`)
+
+    fetch(url, loginRequest)
+        .then(res => res.json())
+        .then(data => {
+            let token = data.token;
+            localStorage.setItem("Token", token);
+            if (token) {
+              window.location.href = "./index.html";
+              console.log('BRAVO');
+            } else {
+                errorMessage.classList.add("display-yes");
+            }
+        });
 }
 
 loginSubmit.addEventListener("click", loginTry);
+
+
+/*fieldPassword.addEventListener("keydown", (e) => {
+    if (e.key === "Enter") {
+        loginTry();
+    }
+});
+fieldEmail.addEventListener("keydown", (e) => {
+    if (e.key === "Enter") {
+        loginTry();
+    }
+}); */

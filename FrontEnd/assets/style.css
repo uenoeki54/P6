@@ -386,6 +386,14 @@ input[type="submit"] {
 	border-radius: 60px;
 }
 
+.display-none {
+	display:none;
+}
+.display-yes {
+	display: block !important;;
+}
+
+
 footer nav ul {
 	display: flex;
 	justify-content: flex-end;
