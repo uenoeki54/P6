@@ -40,7 +40,7 @@ function loginTry() {
 loginSubmit.addEventListener("click", loginTry);
 
 
-/*fieldPassword.addEventListener("keydown", (e) => {
+fieldPassword.addEventListener("keydown", (e) => {
     if (e.key === "Enter") {
         loginTry();
     }
@@ -49,4 +49,4 @@ fieldEmail.addEventListener("keydown", (e) => {
     if (e.key === "Enter") {
         loginTry();
     }
-}); */
+}); 
