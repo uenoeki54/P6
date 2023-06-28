@@ -4,13 +4,13 @@ const fieldEmail = document.getElementById("email");
 const fieldPassword = document.getElementById("password");
 const loginSubmit = document.querySelector(".login-btn");
 const errorMessage = document.getElementById("error-message");
-let url = 'http://localhost:5678/api/users/login';
+const url = 'http://localhost:5678/api/users/login';
 
 function loginTry() {
     const inputEmail = fieldEmail.value;
     const inputPassword = fieldPassword.value;
 
-    let loginRequest = {
+    const loginRequest = {
         method: "POST",
         headers: {
             "Content-type": "application/json"
@@ -24,17 +24,31 @@ function loginTry() {
     };
 
     fetch(url, loginRequest)
-        .then(res => res.json())
-        .then(data => {
-            let token = data.token;
+        .then(response => {
+            if (!response.ok) {
+                throw Error(response.status);
+            }
+            return response.json();
+        })
+        .then(payload => {
+            let token = payload.token;
             localStorage.setItem("Token", token);
             if (token) {
-              window.location.href = "./index.html";
-              console.log('BRAVO');
-            } else {
+                window.location.href = "./backoffice.html";
+                console.log('BRAVO');
+            } /*else {
+                errorMessage.classList.add("display-yes");
+            }*/
+        }).catch(error => {
+            if (error === 404 || error === 401) {
+                errorMessage.classList.remove("pomme-chip");
                 errorMessage.classList.add("display-yes");
             }
-        });
+            else {
+                errorMessage.classList.add("display-yes");
+            }
+        })
+        ;
 }
 
 loginSubmit.addEventListener("click", loginTry);

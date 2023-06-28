@@ -90,7 +90,7 @@ video {
 	font-size: 100%;
 	font: inherit;
 	vertical-align: baseline;
-	background-color: #fffef8;
+	
 }
 
 /* HTML5 display-role reset for older browsers */
@@ -106,11 +106,12 @@ menu,
 nav,
 section {
 	display: block;
+	
 }
 
-body {
-	line-height: 1;
-}
+
+
+
 
 ol,
 ul {
@@ -136,7 +137,40 @@ table {
 }
 
 /** end reset css**/
+#banner {
+	background-color: black;
+	height: 60px;
+	display:flex;
+	align-items: center;
+	justify-content:center;
+}
+
+#banner ul {
+	display:flex;
+	justify-content:space-between;
+	align-items: center;
+	gap:8px;
+	color:#fff;
+
+}
+
+
+#banner li span{
+	
+	font-size: 19px;
+	font-family: Work Sans;
+}
+
+#banner i {
+	font-size: 19px;
+}
 body {
+	background-color: #fffef8;
+}
+
+#main_container {
+	line-height: 1;
+	background-color: #fffef8;
 	max-width: 1140px;
 	margin: auto;
 	font-family: 'Work Sans';
@@ -192,7 +226,7 @@ nav li a {
 	text-decoration: none;
 }
 
-li:hover {
+nav li:hover {
 	color: #B1663C;
 }
 nav li a:visited {
@@ -234,13 +268,13 @@ nav li a:hover {
 	margin-bottom: 1em;
 }
 
-#login-form h2 {
+#login h2 {
 	text-align: center;
 	margin-bottom: 1em;
 
 }
 
-#login-form .container {
+#login .container {
 
 	display: flex;
 	flex-direction: column;
@@ -347,7 +381,7 @@ input[type=password] {
 }
 
 
-#contact, #login-form {
+#contact, #login {
 	width: 50%;
 	margin: auto;
 }
@@ -357,52 +391,36 @@ input[type=password] {
 
 }
 
-#contact h2 {
-	margin-bottom: 20px;
-}
-
-#login-form h2 {
+#contact h2, #login h2 {
 	margin-bottom: 20px;
 }
 
 
 
-#contact form {
+
+
+#contact form, #login form {
 	text-align: left;
 	margin-top: 30px;
 	display: flex;
 	flex-direction: column;
 }
 
-#login-form form {
-	text-align: left;
-	margin-top: 30px;
-	display: flex;
-	flex-direction: column;
-}
+ 
 
-#contact input {
+#contact input, #login input {
 	height: 50px;
 	font-size: 1.2em;
 	border: none;
 	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
 }
 
-#login-form input {
-	height: 50px;
-	font-size: 1.2em;
-	border: none;
-	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
-}
 
-#contact label {
+#contact label, #login label {
 	margin: 2em 0 1em 0;
 }
 
 
-#login-form label {
-	margin: 2em 0 1em 0;
-}
 
 #contact textarea {
 	border: none;
@@ -421,11 +439,12 @@ input[type="submit"] {
 }
 
 footer {
-	background: #fff;
+	background-color: #fff;
 }
 
 footer nav ul {
 	display: flex;
 	justify-content: flex-end;
-	margin: 2em
+	margin: 2em;
+	background-color: #fff;
 }
