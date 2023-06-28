@@ -90,7 +90,7 @@ video {
 	font-size: 100%;
 	font: inherit;
 	vertical-align: baseline;
-	
+
 }
 
 /* HTML5 display-role reset for older browsers */
@@ -106,7 +106,7 @@ menu,
 nav,
 section {
 	display: block;
-	
+
 }
 
 
@@ -140,23 +140,23 @@ table {
 #banner {
 	background-color: black;
 	height: 60px;
-	display:flex;
+	display: flex;
 	align-items: center;
-	justify-content:center;
+	justify-content: center;
 }
 
 #banner ul {
-	display:flex;
-	justify-content:space-between;
+	display: flex;
+	justify-content: space-between;
 	align-items: center;
-	gap:8px;
-	color:#fff;
+	gap: 8px;
+	color: #fff;
 
 }
 
 
-#banner li span{
-	
+#banner li span {
+
 	font-size: 19px;
 	font-family: Work Sans;
 }
@@ -164,6 +164,18 @@ table {
 #banner i {
 	font-size: 19px;
 }
+
+#publish {
+	width: fit-content;
+	padding-right: 15px;
+	padding-left: 15px;
+	height: 38px;
+	border-radius: 60px;
+	font-size: 19px;
+	font-family: Work Sans;
+
+}
+
 body {
 	background-color: #fffef8;
 }
@@ -229,9 +241,11 @@ nav li a {
 nav li:hover {
 	color: #B1663C;
 }
+
 nav li a:visited {
 	color: black;
 }
+
 nav li a:hover {
 	color: #B1663C;
 }
@@ -242,13 +256,19 @@ nav li a:hover {
 }
 
 #introduction figure {
-	flex: 1
+	flex: 1;
 }
 
 #introduction img {
 	display: block;
 	margin: auto;
 	width: 80%;
+}
+
+#introduction figcaption {
+	margin-top: 10px;
+	margin-left: 10%;
+
 }
 
 #introduction article {
@@ -263,9 +283,28 @@ nav li a:hover {
 	margin-bottom: 0.5em;
 }
 
+#mes-projets {
+	position: relative;
+	width:fit-content;
+	margin-left: auto;
+	margin-right: auto;
+}
+#modifier {
+	position:absolute;
+	left:220px;
+	top:10px;
+	display: flex;
+	justify-content: space-between;
+	gap:5px;
+
+}
 #portfolio h2 {
 	text-align: center;
 	margin-bottom: 1em;
+}
+
+.plusbas {
+	margin-top: 100px;
 }
 
 #login h2 {
@@ -311,7 +350,7 @@ input[type=password] {
 }*/
 
 .champ input::placeholder {
-	color:#B1663C;
+	color: #B1663C;
 }
 
 .login-btn {
@@ -330,12 +369,14 @@ input[type=password] {
 }
 
 .display-none {
-	display:none;
+	display: none;
 }
-.display-yes {
+
+.display {
 	display: block !important;
 	color: red;
 }
+
 .categories {
 	width: fit-content;
 	margin-left: auto;
@@ -381,7 +422,8 @@ input[type=password] {
 }
 
 
-#contact, #login {
+#contact,
+#login {
 	width: 50%;
 	margin: auto;
 }
@@ -391,7 +433,8 @@ input[type=password] {
 
 }
 
-#contact h2, #login h2 {
+#contact h2,
+#login h2 {
 	margin-bottom: 20px;
 }
 
@@ -399,16 +442,18 @@ input[type=password] {
 
 
 
-#contact form, #login form {
+#contact form,
+#login form {
 	text-align: left;
 	margin-top: 30px;
 	display: flex;
 	flex-direction: column;
 }
 
- 
 
-#contact input, #login input {
+
+#contact input,
+#login input {
 	height: 50px;
 	font-size: 1.2em;
 	border: none;
@@ -416,7 +461,8 @@ input[type=password] {
 }
 
 
-#contact label, #login label {
+#contact label,
+#login label {
 	margin: 2em 0 1em 0;
 }
 
@@ -439,12 +485,23 @@ input[type="submit"] {
 }
 
 footer {
+	position: relative;
 	background-color: #fff;
+	height: 60px;
+	font-family: 'Work Sans';
+
 }
 
 footer nav ul {
-	display: flex;
-	justify-content: flex-end;
-	margin: 2em;
+	position:absolute;
+	top: 24px;
+    left: 1224px;
 	background-color: #fff;
+}
+
+footer nav ul li {
+	font-size: 14px;
+	font-weight: 300;
+	font-size: 14px;
+	line-height: 16px;
 }

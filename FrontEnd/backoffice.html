@@ -21,9 +21,9 @@
         <ul>
             <li><i class="fa-regular fa-pen-to-square"></i></li>
             <li><span>Mode édition</span></li>
-            <li><a href="#">Item plus long</a></li>
+            <li><button id="publish">publier les changements</button></li>
         </ul>
-       
+
     </div>
     <div id="main_container">
         <header>
@@ -40,7 +40,8 @@
         <main>
             <section id="introduction">
                 <figure>
-                    <img src="./assets/images/sophie-bluel.png" alt="">
+                    <img src="./assets/images/sophie-bluel.png" alt="photo de Sophie Bluel">
+                    <figcaption><i class="fa-regular fa-pen-to-square"></i>modifier</figcaption>
                 </figure>
                 <article>
                     <h2>Designer d'espace</h2>
@@ -54,14 +55,13 @@
                 </article>
             </section>
             <section id="portfolio">
-                <h2>Mes Projets</h2>
-                <div class="categories">
-                    <button id="btn-tous">Tous</button>
-                    <button id="btn-objets">Objets</button>
-                    <button id="btn-apparts">Appartements</button>
-                    <button id="btn-hotels">Hôtels et restaurants</button>
+                <div id="mes-projets">
+                    <h2>Mes Projets</h2>
+                    <div id="modifier">
+                        <i class="fa-regular fa-pen-to-square"></i><span>modifier</span>
+                    </div>
                 </div>
-                <div class="gallery">
+                <div class="gallery plusbas">
                     <figure>
                         <img src="assets/images/abajour-tahina.png" alt="Abajour Tahina">
                         <figcaption>Abajour Tahina</figcaption>
@@ -123,14 +123,15 @@
             </section>
         </main>
 
-        <footer>
-            <nav>
-                <ul>
-                    <li>Mentions Légales</li>
-                </ul>
-            </nav>
-        </footer>
+
     </div>
+    <footer>
+        <nav>
+            <ul>
+                <li>Mentions Légales</li>
+            </ul>
+        </nav>
+    </footer>
 </body>
 
 </html>

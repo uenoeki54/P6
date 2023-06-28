@@ -2,8 +2,9 @@
 
 const fieldEmail = document.getElementById("email");
 const fieldPassword = document.getElementById("password");
-const loginSubmit = document.querySelector(".login-btn");
+const loginSubmit = document.getElementById("login-btn");
 const errorMessage = document.getElementById("error-message");
+const unknownErrorMessage = document.getElementById("unknown-error-message");
 const url = 'http://localhost:5678/api/users/login';
 
 function loginTry() {
@@ -41,11 +42,12 @@ function loginTry() {
             }*/
         }).catch(error => {
             if (error === 404 || error === 401) {
-                errorMessage.classList.remove("pomme-chip");
-                errorMessage.classList.add("display-yes");
+                unknownErrorMessage.classList.remove("display");
+                errorMessage.classList.add("display");
             }
             else {
-                errorMessage.classList.add("display-yes");
+                errorMessage.classList.remove("display");
+                unknownErrorMessage.classList.add("display");
             }
         })
         ;

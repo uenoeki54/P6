@@ -15,41 +15,43 @@
 </head>
 
 <body>
-    <header>
-        <h1>Sophie Bluel <span>Architecte d'intérieur</span></h1>
-        <nav>
-            <ul>
-                <li><a href="index.html">projets</a></li>
-                <li>contact</li>
-                <li>login</li>
-                <li><img src="./assets/icons/instagram.png" alt="Instagram"></li>
-            </ul>
-        </nav>
-    </header>
-    <main>
-        <section id="login">
-            <h2>Login</h2>
-            <div class="container">
-                <form action="">
-                    <label for="email"><b>E-mail</b></label>
-                    <input type="email" id="email" placeholder="nom@domaine.xxx"  required >
-                    <label for="password"><b>Mot de passe</b></label>
-                    <input type="password" id="password" placeholder="*******" required >
-                </form>
-                <div class="champ login-btn ">
-                    <button type="submit" class="login-btn">Se connecter</button>
-                </div>
-                <div class=" champ display-none" id="error-message">L'un ou l'autre de vos identifiants ne sont pas
-                    valides</div>
-                
-                <div class="champ">
-                    <a href="login.html">Mot de passe oublié</a>
-                </div>
-            </div>
-        </section>
+    <div id="main_container">
+        <header>
+            <h1>Sophie Bluel <span>Architecte d'intérieur</span></h1>
+            <nav>
+                <ul>
+                    <li><a href="index.html">projets</a></li>
+                    <li>contact</li>
+                    <li>login</li>
+                    <li><img src="./assets/icons/instagram.png" alt="Instagram"></li>
+                </ul>
+            </nav>
+        </header>
+        <main>
+            <section id="login">
+                <h2>Login</h2>
+                <div class="container">
+                    <form action="">
+                        <label for="email"><b>E-mail</b></label>
+                        <input type="email" id="email" placeholder="nom@domaine.xxx" required>
+                        <label for="password"><b>Mot de passe</b></label>
+                        <input type="password" id="password" placeholder="*******" required>
+                    </form>
+                    <div class="champ" id="login-btn">
+                        <button type="submit" class="login-btn">Se connecter</button>
+                    </div>
+                    <div class=" champ display-none" id="error-message">L'un ou l'autre de vos identifiants n"est pas
+                        valides</div>
+                    <div class=" champ display-none" id="unknown-error-message">Erreur serveur</div>
 
-    </main>
+                    <div class="champ">
+                        <a href="login.html">Mot de passe oublié</a>
+                    </div>
+                </div>
+            </section>
 
+        </main>
+    </div>
     <footer>
         <nav>
             <ul>
