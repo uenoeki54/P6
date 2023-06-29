@@ -7,7 +7,8 @@ const errorMessage = document.getElementById("error-message");
 const unknownErrorMessage = document.getElementById("unknown-error-message");
 const url = 'http://localhost:5678/api/users/login';
 
-function loginTry() {
+function loginTry(e) {
+    e.preventDefault();
     const inputEmail = fieldEmail.value;
     const inputPassword = fieldPassword.value;
 
@@ -41,7 +42,8 @@ function loginTry() {
                 errorMessage.classList.add("display-yes");
             }*/
         }).catch(error => {
-            if (error === 404 || error === 401) {
+            const errorCode = error.message;
+            if (errorCode === '404' ||errorCode === '401') {
                 unknownErrorMessage.classList.remove("display");
                 errorMessage.classList.add("display");
             }

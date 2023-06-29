@@ -5,13 +5,14 @@
     <meta charset="UTF-8">
     <title>Sophie Bluel - Architecte d'intérieur</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script type="module" src="./assets/projets.js"></script>
+    <script type="module" src="./assets/app.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Work+Sans&display=swap"
         rel="stylesheet">
     <meta name="description" content="">
     <link rel="stylesheet" href="./assets/style.css">
+    <link rel="stylesheet" href="./assets/modal.css">
     <script src="https://kit.fontawesome.com/0ba4023743.js" crossorigin="anonymous"></script>
 
 </head>
@@ -41,7 +42,7 @@
             <section id="introduction">
                 <figure>
                     <img src="./assets/images/sophie-bluel.png" alt="photo de Sophie Bluel">
-                    <figcaption><i class="fa-regular fa-pen-to-square"></i>modifier</figcaption>
+                    <figcaption><i class="fa-regular fa-pen-to-square"></i><a href="#modal" class="js-modal">modifier</a></figcaption>
                 </figure>
                 <article>
                     <h2>Designer d'espace</h2>
@@ -58,7 +59,7 @@
                 <div id="mes-projets">
                     <h2>Mes Projets</h2>
                     <div id="modifier">
-                        <i class="fa-regular fa-pen-to-square"></i><span>modifier</span>
+                        <i class="fa-regular fa-pen-to-square"></i><a href="#modal" class="js-modal">modifier</a>
                     </div>
                 </div>
                 <div class="gallery plusbas">
@@ -122,7 +123,7 @@
                 </form>
             </section>
         </main>
-
+    <aside id="modal" class="modal" aria-hidden="true" role="dialog" aria-modal="false"></aside>
 
     </div>
     <footer>
