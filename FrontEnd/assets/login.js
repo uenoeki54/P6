@@ -7,11 +7,30 @@ const errorMessage = document.getElementById("error-message");
 const unknownErrorMessage = document.getElementById("unknown-error-message");
 const errorMail = document.getElementById("error-mail")
 const url = 'http://localhost:5678/api/users/login';
+const expressionReguliere = /^(([^<>()[]\.,;:s@]+(.[^<>()[]\.,;:s@]+)*)|(.+))@(([[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}])|(([a-zA-Z-0-9]+.)+[a-zA-Z]{2,}))$/;
+
+
+
+
+function testEmail() {
+    let inputEmail = fieldEmail.value;
+    if (!expressionReguliere.test(inputEmail)) {
+        fieldEmail.classList.add("border-red");
+        errorMail.classList.add("display");
+        console.log('format email incorrect');
+    }
+    else {
+        fieldEmail.classList.remove("border-red");
+        errorMail.classList.remove("display");
+        console.log('format email correct');
+    }
+}
+
 
 function loginTry(e) {
     e.preventDefault();
-    const inputEmail = fieldEmail.value;
-    var expressionReguliere = /^(([^<>()[]\.,;:s@]+(.[^<>()[]\.,;:s@]+)*)|(.+))@(([[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}])|(([a-zA-Z-0-9]+.)+[a-zA-Z]{2,}))$/;
+    let inputEmail = fieldEmail.value;
+
     errorMail.classList.remove("display");
     if (!expressionReguliere.test(inputEmail)) {
         errorMail.classList.add("display")
@@ -59,18 +78,32 @@ function loginTry(e) {
                 }
             })
             ;
-    }}
+    }
+}
 
-    loginSubmit.addEventListener("click", loginTry);
+loginSubmit.addEventListener("click", loginTry);
 
 
-    fieldPassword.addEventListener("keydown", (e) => {
-        if (e.key === "Enter") {
-            loginTry();
-        }
-    });
-    fieldEmail.addEventListener("keydown", (e) => {
-        if (e.key === "Enter") {
-            loginTry();
-        }
-    });
+fieldPassword.addEventListener("keydown", (e) => {
+    if (e.key === "Enter") {
+        loginTry();
+    }
+});
+fieldEmail.addEventListener("keydown", (e) => {
+    if (e.key === "Enter") {
+        loginTry();
+    }
+});
+
+fieldEmail.addEventListener("focus", () => {
+    testEmail();
+});
+
+fieldEmail.addEventListener("blur", () => {
+    testEmail();
+});
+
+fieldEmail.addEventListener("keyup", () => {
+    testEmail();
+});
+

@@ -398,6 +398,11 @@ input[type=password] {
 	color: red;
 }
 
+.border-red {
+	border: solid 1px!important;
+	border-color: red!important;
+}
+
 .categories {
 	width: fit-content;
 	margin-left: auto;
