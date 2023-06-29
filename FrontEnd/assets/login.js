@@ -5,66 +5,72 @@ const fieldPassword = document.getElementById("password");
 const loginSubmit = document.getElementById("login-btn");
 const errorMessage = document.getElementById("error-message");
 const unknownErrorMessage = document.getElementById("unknown-error-message");
+const errorMail = document.getElementById("error-mail")
 const url = 'http://localhost:5678/api/users/login';
 
 function loginTry(e) {
     e.preventDefault();
     const inputEmail = fieldEmail.value;
-    const inputPassword = fieldPassword.value;
+    var expressionReguliere = /^(([^<>()[]\.,;:s@]+(.[^<>()[]\.,;:s@]+)*)|(.+))@(([[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}])|(([a-zA-Z-0-9]+.)+[a-zA-Z]{2,}))$/;
+    errorMail.classList.remove("display");
+    if (!expressionReguliere.test(inputEmail)) {
+        errorMail.classList.add("display")
+    }
+    else {
+        const inputPassword = fieldPassword.value
+        const loginRequest = {
+            method: "POST",
+            headers: {
+                "Content-type": "application/json"
+            },
+            body: JSON.stringify({
+                email: inputEmail,
+                password: inputPassword,
+            }),
 
-    const loginRequest = {
-        method: "POST",
-        headers: {
-            "Content-type": "application/json"
-        },
-        body: JSON.stringify({
-            email: inputEmail,
-            password: inputPassword,
-        }),
 
+        }
 
-    };
-
-    fetch(url, loginRequest)
-        .then(response => {
-            if (!response.ok) {
-                throw Error(response.status);
-            }
-            return response.json();
-        })
-        .then(payload => {
-            let token = payload.token;
-            localStorage.setItem("Token", token);
-            if (token) {
-                window.location.href = "./backoffice.html";
-                console.log('BRAVO');
-            } /*else {
+        fetch(url, loginRequest)
+            .then(response => {
+                if (!response.ok) {
+                    throw Error(response.status);
+                }
+                return response.json();
+            })
+            .then(payload => {
+                let token = payload.token;
+                localStorage.setItem("Token", token);
+                if (token) {
+                    window.location.href = "./backoffice.html";
+                    console.log('BRAVO');
+                } /*else {
                 errorMessage.classList.add("display-yes");
             }*/
-        }).catch(error => {
-            const errorCode = error.message;
-            if (errorCode === '404' ||errorCode === '401') {
-                unknownErrorMessage.classList.remove("display");
-                errorMessage.classList.add("display");
-            }
-            else {
-                errorMessage.classList.remove("display");
-                unknownErrorMessage.classList.add("display");
-            }
-        })
-        ;
-}
+            }).catch(error => {
+                const errorCode = error.message;
+                if (errorCode === '404' || errorCode === '401') {
+                    unknownErrorMessage.classList.remove("display");
+                    errorMessage.classList.add("display");
+                }
+                else {
+                    errorMessage.classList.remove("display");
+                    unknownErrorMessage.classList.add("display");
+                }
+            })
+            ;
+    }}
 
-loginSubmit.addEventListener("click", loginTry);
+    loginSubmit.addEventListener("click", loginTry);
 
 
-fieldPassword.addEventListener("keydown", (e) => {
-    if (e.key === "Enter") {
-        loginTry();
-    }
-});
-fieldEmail.addEventListener("keydown", (e) => {
-    if (e.key === "Enter") {
-        loginTry();
-    }
-}); 
+    fieldPassword.addEventListener("keydown", (e) => {
+        if (e.key === "Enter") {
+            loginTry();
+        }
+    });
+    fieldEmail.addEventListener("keydown", (e) => {
+        if (e.key === "Enter") {
+            loginTry();
+        }
+    });
