@@ -1,12 +1,40 @@
+let target = null
+
 const openModal = function (e) {
     e.preventDefault();
-    const target = document.querySelector(e.target.getAttribute('href'));
+    target = document.querySelector(e.target.getAttribute('href'));
     console.log(target);
-    target.style.display = null;
+    //affichage de la modale avec visibility; visible!important dans le css
+    target.classList.remove("display-none");
+    //accessibilité pour ceux qui ont un lecteur d'ecran
+    target.removeAttribute('aria-hidden');
+    target.setAttribute('aria-modal', true);
+    //appel fonction pour fermer la modale
+    target.addEventListener('click', closeModal)
+    document.querySelector('.js-modal-close').addEventListener('click', closeModal)
+    document.querySelector('.js-modal-stop').addEventListener('click', stopPropagation)
+
+}
+const closeModal = function(e) {
+    if (target === null)return;
+    e.preventDefault();
+    //effacement de la modale avec visibility; visible!important dans le css
+    target.classList.add("display-none");
+    //accessibilité pour ceux qui ont un lecteur d'ecran
+    target.setAttribute('aria-hidden', 'true');
+    target.removeAttribute('aria-modal');
+    target.removeEventListener('click', closeModal)
+    target.querySelector('.js-modal-close').removeEventListener('click', closeModal)
+    target.querySelector('.js-modal-stop').removeEventListener('click', stopPropagation)
+    target = null
+    
+}
+
+const stopPropagation = function(e) {
+    e.stopPropagation()
 }
 
 
-
-document.querySelectorAll('.js-modal'), forEach(a => {
-    addEventListener('click', openModal)
+document.querySelectorAll('.js-modal').forEach(a => {
+    a.addEventListener('click', openModal)
 })

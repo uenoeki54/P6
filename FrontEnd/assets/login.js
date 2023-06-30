@@ -27,8 +27,7 @@ function testEmail() {
 }
 
 
-function loginTry(e) {
-    e.preventDefault();
+function loginTry() {
     let inputEmail = fieldEmail.value;
 
     errorMail.classList.remove("display");

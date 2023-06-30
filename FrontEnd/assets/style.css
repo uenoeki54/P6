@@ -390,12 +390,12 @@ input[type=password] {
 }
 
 .display-none {
-	display: none;
+	visibility: hidden;
 }
 
 .display {
-	display: block !important;
 	color: red;
+	visibility: visible!important;
 }
 
 .border-red {
