@@ -1,3 +1,4 @@
+
 let target = null
 
 const openModal = function (e) {
@@ -37,4 +38,12 @@ const stopPropagation = function(e) {
 
 document.querySelectorAll('.js-modal').forEach(a => {
     a.addEventListener('click', openModal)
+})
+
+//sortie de la modale avecl atouche esc
+
+window.addEventListener('keydown', function(e) {
+    if (e.key === "Escape" || e.key ==="Esc")
+    closeModal(e);
+
 })
