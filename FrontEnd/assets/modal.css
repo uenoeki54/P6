@@ -1,24 +1,120 @@
-* {box-sizing:border-box;}
+* {
+    box-sizing: border-box;
+}
 
 .modal {
     position: fixed;
-    display:flex;
+    display: flex;
     align-items: center;
     justify-content: center;
     top: 0;
     left: 0;
     width: 100%;
-    background: rgba(0,0,0,0.8);
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
 }
 
 
 
 #modal-wrapper {
+    position: relative;
     background: #fff;
-    width:600px;
+    width: 600px;
     max-width: calc(100vw - 20px);
     max-height: calc(100vh - 20px);
     padding: 20px;
     overflow: auto;
+    border-radius: 10px;
 
+}
+
+.fa-xmark {
+    position: absolute;
+    width: 24px;
+    right: 24px;
+}
+
+#modal-wrapper h1 {
+    /* top and bottom | left and right */
+    margin: 30px auto;
+    color: black;
+    width: fit-content;
+    font-family: 'Work Sans';
+    font-weight: 400;
+    font-size: 26px;
+    line-height: 30.5px;
+
+
+}
+
+.gallery-modal {
+    margin: 10px auto;
+    width: 80%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-column-gap: 5px;
+    grid-row-gap: 5px;
+}
+
+.gallery-modal img {
+    width: 76.86px;
+    height: 102.57px;
+
+}
+
+.gallery-modal figure {
+    position: relative;
+}
+
+.thrash {
+    position: absolute;
+    right: 12px;
+    top: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: black;
+    border-radius: 5px;
+    width: 17px;
+    height: 17px;
+
+}
+
+.fa-trash-can {
+    color: white;
+    font-size: 11px;
+}
+
+#modal-wrapper hr {
+    width: 80%;
+    margin: 30px auto;
+    color: #1D6154;
+}
+
+#modal-wrapper button {
+    display: block;
+    font-family: 'Syne';
+    font-weight: 700;
+    color: white;
+    background-color: #1D6154;
+    border-color: #1D6154;
+    margin: 5px auto;
+    padding: 5px 30px;
+    width: fit-content;
+    text-align: center;
+    border-radius: 60px;
+}
+
+#modal-wrapper p {
+    color: #B1663C;
+    font-family: 'Syne';
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 16.8px;
+    margin: 20px auto 5px auto;
+    text-align: center;
+}
+
+footer {
+    z-index: -1;
 }

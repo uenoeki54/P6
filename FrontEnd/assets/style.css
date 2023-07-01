@@ -155,10 +155,15 @@ table {
 }
 
 
-#banner li span {
-
+#banner li a {
+	color:#fff;
+	text-decoration: none;
 	font-size: 19px;
 	font-family: Work Sans;
+}
+
+#banner li a:hover {
+	color:#B1663C;
 }
 
 #banner i {
