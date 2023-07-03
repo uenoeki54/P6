@@ -395,12 +395,12 @@ input[type=password] {
 }
 
 .display-none {
-	visibility: hidden;
+	display:none;
 }
 
 .display {
 	color: red;
-	visibility: visible!important;
+	display: block!important;
 }
 
 .border-red {

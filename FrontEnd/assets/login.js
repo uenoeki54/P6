@@ -45,7 +45,8 @@ function loginTry() {
                 email: inputEmail,
                 password: inputPassword,
             }),
-
+            mode: "cors",
+            credentials: "same-origin",
 
         }
 

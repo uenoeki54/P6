@@ -34,6 +34,10 @@
     right: 24px;
 }
 
+.modal-closed{
+    visibility:hidden;
+}
+
 #modal-wrapper h1 {
     /* top and bottom | left and right */
     margin: 30px auto;
