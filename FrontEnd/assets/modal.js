@@ -31,21 +31,31 @@ galleryModal.addEventListener('click', (event) => {
                 Authorization: `Bearer ${token}`
             }
         };
-        fetch(`http://localhost:5678/api/works/${projectId}`, deleteRequest)  
+        fetch(`http://localhost:5678/api/works/${projectId}`, deleteRequest)
             .then(function (res) {
                 console.log(res)
                 if (res.ok) {
                     //efface le projet supprimed du DOM
                     console.log(figure);
                     figure.innerHTML = "";
-                    
-                    
+
+
                     /*affiche les projets mis a jour dans la page d'accueil
                     genererProjets(projets);*/
+                    return fetch('http://localhost:5678/api/works');
+
                 } else {
                     console.error('erreur dans la suppression de l element');
                 }
-            })
+            })/*.then(response => {
+                return response.json();
+            }).then(payload => { 
+                console.log(payload);
+                const projects = payload;
+                console.log(projects);
+                genererProjets(projects);
+            
+        })*/
 
     }
 })
