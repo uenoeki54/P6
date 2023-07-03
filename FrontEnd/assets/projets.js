@@ -3,7 +3,6 @@ import { genererProjets } from "./fonctions.js";
 // Récupération des PROJETS PHOTO depuis l'API
 const reponse = await fetch('http://localhost:5678/api/works');
 let projets = await reponse.json();
-console.log(projets)
 
 // Creation de la fonction qui cree les projets au bon endroit depuis le back
 

@@ -28,7 +28,7 @@ export function genererProjetsModal (projets){
         const figure = document.createElement("figure")
         //on affiche licone dans l image avec uen classe de mise en page et uen classe poru l utiliser en JS
         figure.innerHTML = '<div class="thrash js-thrash"><i class="fa-solid fa-trash-can js-thrash"></i></div>'
-        figure.setAttribute('id', `${i}`)
+        figure.setAttribute('id', projets[i].id)
         galleryModal.appendChild(figure)
         const photo = document.createElement("img")
         photo.src = projets[i].imageUrl
