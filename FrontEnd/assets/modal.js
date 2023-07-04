@@ -41,8 +41,8 @@ galleryModal.addEventListener('click', (event) => {
 
 
                     /*affiche les projets mis a jour dans la page d'accueil
-                    genererProjets(projets);*/
-                    return fetch('http://localhost:5678/api/works');
+                    genererProjets(projets);
+                    return fetch('http://localhost:5678/api/works');*/
 
                 } else {
                     console.error('erreur dans la suppression de l element');

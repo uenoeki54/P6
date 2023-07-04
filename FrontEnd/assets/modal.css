@@ -70,13 +70,12 @@
     position: relative;
 }
 
+
+
 .thrash {
     position: absolute;
-    right: 12px;
-    top: 5px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    right: 11px;
+    top: 5px;   
     background: black;
     border-radius: 5px;
     width: 17px;
@@ -84,7 +83,33 @@
 
 }
 
+.chaos-star {
+    position: absolute;
+    right: 29px;
+    top: 5px;   
+    background: black;
+    border-radius: 5px;
+    width: 17px;
+    height: 17px;
+    display:none;
+}
+
+figure:hover .chaos-star  {
+    display: block!important;
+}
+
 .fa-trash-can {
+    position:absolute;
+    right: 4px;
+    top: 3px;
+    color: white;
+    font-size: 11px;
+}
+
+.fa-arrows-up-down-left-right {
+    position:absolute;
+    right: 3.5px;
+    top: 3px;
     color: white;
     font-size: 11px;
 }
