@@ -43,7 +43,9 @@ galleryModal.addEventListener('click', (event) => {
                     /*affiche les projets mis a jour dans la page d'accueil
                     genererProjets(projets);
                     return fetch('http://localhost:5678/api/works');*/
-
+                const figureBack = document.querySelector('.number' + projectId);
+                figureBack.innerHTML = "";
+                console.log('figureBack est' + figureBack);
                 } else {
                     console.error('erreur dans la suppression de l element');
                 }

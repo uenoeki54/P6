@@ -8,6 +8,7 @@ export function genererProjets(projets) {
         const photo = document.createElement("img")
         photo.src = projets[i].imageUrl
         figure.appendChild(photo)
+        figure.setAttribute('class', 'number' + projets[i].id)
         const figCaption = document.createElement("figcaption")
         figCaption.innerText = projets[i].title
         figure.appendChild(figCaption)
