@@ -33,7 +33,6 @@ export function genererProjetsModal (projets){
         galleryModal.appendChild(figure)
         const photo = document.createElement("img")
         photo.src = projets[i].imageUrl
-        console.log(projets[i].imageUrl)
         figure.appendChild(photo)
         const figCaption = document.createElement("figcaption")
         figure.appendChild(figCaption)

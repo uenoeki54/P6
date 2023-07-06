@@ -25,7 +25,8 @@
     padding: 20px;
     overflow: auto;
     border-radius: 10px;
-
+    display: flex;
+    flex-direction: column
 }
 
 .fa-xmark {
@@ -34,8 +35,8 @@
     right: 24px;
 }
 
-.modal-closed{
-    visibility:hidden;
+.modal-closed {
+    visibility: hidden;
 }
 
 #modal-wrapper h1 {
@@ -70,12 +71,14 @@
     position: relative;
 }
 
-
+.hide-modal-elements {
+    display: none !important;
+}
 
 .thrash {
     position: absolute;
     right: 11px;
-    top: 5px;   
+    top: 5px;
     background: black;
     border-radius: 5px;
     width: 17px;
@@ -86,20 +89,20 @@
 .chaos-star {
     position: absolute;
     right: 29px;
-    top: 5px;   
+    top: 5px;
     background: black;
     border-radius: 5px;
     width: 17px;
     height: 17px;
-    display:none;
+    display: none;
 }
 
-figure:hover .chaos-star  {
-    display: block!important;
+figure:hover .chaos-star {
+    display: block !important;
 }
 
 .fa-trash-can {
-    position:absolute;
+    position: absolute;
     right: 4px;
     top: 3px;
     color: white;
@@ -107,7 +110,7 @@ figure:hover .chaos-star  {
 }
 
 .fa-arrows-up-down-left-right {
-    position:absolute;
+    position: absolute;
     right: 3.5px;
     top: 3px;
     color: white;
@@ -132,6 +135,39 @@ figure:hover .chaos-star  {
     width: fit-content;
     text-align: center;
     border-radius: 60px;
+}
+
+#modal input {
+    width: 420px;
+}
+
+#display-image {
+    width: 420px;
+    height: 169px;
+    border: 1px solid black;
+    background-position: center;
+    background-size: cover;
+
+}
+
+#modal form {
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.add-project-btn {
+    width: 179px;
+    height: 36px;
+    border-radius: 60px;
+    background-color: #1D6154;
+    border: 0px;
+    color: white;
+    font-family: 'Syne';
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 16.8px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 #modal-wrapper p {
