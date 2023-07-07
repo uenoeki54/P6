@@ -147,7 +147,15 @@ figure:hover .chaos-star {
     border: 1px solid black;
     background-position: center;
     background-size: cover;
+    display:flex;
+    justify-content: center;
 
+}
+
+#image-preview {
+    height: 169px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 #modal form {

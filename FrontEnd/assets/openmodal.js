@@ -19,6 +19,12 @@ const openModal = function (e) {
      document.querySelector('.js-line').classList.remove("hide-modal-elements");
      //On cache le formulaire d'ajout d image
      document.querySelector('#new-project-form').classList.add("hide-modal-elements");
+     //reaffichage EVENTUEL du champ d'upload et effacement eventuel des vignettes de la deuxieme modale
+     const imagePreviewErase = document.querySelector('#image-preview');
+     console.log(imagePreviewErase);
+     if (imagePreviewErase !== null){
+     imagePreviewErase.remove();}
+     document.getElementById('image-input').classList.remove('hide-modal-elements');
     //accessibilité pour ceux qui ont un lecteur d'ecran
     target.removeAttribute('aria-hidden');
     target.setAttribute('aria-modal', true);
@@ -40,6 +46,7 @@ const closeModal = function(e) {
     target.querySelector('.js-modal-close').removeEventListener('click', closeModal)
     target.querySelector('.js-modal-stop').removeEventListener('click', stopPropagation)
     target = null
+    
     
 }
 //Au lieu d ouvrir uen nouvelel modale on reste dan sla meme mais on change le DOM depuis le JS

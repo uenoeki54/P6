@@ -24,8 +24,17 @@ var uploadedImage = "";
 imageInput.addEventListener('change', function(){
     var reader = new FileReader();
     reader.addEventListener('load', () => {
-        uploadedImage = reader.result;
-        document.getElementById('display-image').style.backgroundImage = `url(${uploadedImage})`;
+        //on cache le input pour correspondre a la maquette
+        imageInput.classList.add('hide-modal-elements');
+        //on affiche la preview
+        const imagePreview = document.createElement('img');
+        imagePreview.src = reader.result;
+        //on ajoute une classe afin de pouvoir recuperer cette image et l'effacer plus tard
+        imageInput.classList.add('js-preview');
+        //on la RESIZE via propriete CSS
+        imagePreview.id = 'image-preview';
+        document.getElementById('display-image').appendChild(imagePreview);
+
     });
     reader.readAsDataURL(this.files[0]);
 }
