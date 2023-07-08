@@ -178,6 +178,10 @@ figure:hover .chaos-star {
     margin-right: auto;
 }
 
+.add-project-button-inactive {
+    background-color: grey!important;
+}
+
 #modal-wrapper p {
     color: #B1663C;
     font-family: 'Syne';
