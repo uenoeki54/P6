@@ -62,6 +62,12 @@ const changeModal = function (e) {
     document.querySelector('.js-line').classList.add("hide-modal-elements");
     //on display le formulaire
     document.querySelector('#new-project-form').classList.remove("hide-modal-elements");
+    //on vide les champs dans le formulaire
+    document.getElementById("image-input").value = "";
+    document.getElementById("title").value = ""
+    //on remet eventuellement le bouton en gris
+    document.querySelector(".add-project-btn").classList.add("add-project-button-inactive");
+
 }
 const stopPropagation = function(e) {
     e.stopPropagation()

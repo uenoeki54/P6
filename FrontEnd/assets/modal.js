@@ -23,7 +23,6 @@ galleryModal.addEventListener('click', (event) => {
 
         //acces au token stocké dans localstorage lors du login 
         const token = localStorage.getItem('Token');
-        console.log(token);
         //envoyer une requete pour supprimer le projet de la database
         let deleteRequest = {
             method: "DELETE",
@@ -36,16 +35,13 @@ galleryModal.addEventListener('click', (event) => {
                 console.log(res)
                 if (res.ok) {
                     //efface le projet supprimed du DOM
-                    console.log(figure);
                     figure.innerHTML = "";
 
 
-                    /*affiche les projets mis a jour dans la page d'accueil
-                    genererProjets(projets);
-                    return fetch('http://localhost:5678/api/works');*/
+                    /*efface le projet dans le DOM de l apage d acceuil
+                   */
                 const figureBack = document.querySelector('.number' + projectId);
                 figureBack.innerHTML = "";
-                console.log('figureBack est' + figureBack);
                 } else {
                     console.error('erreur dans la suppression de l element');
                 }

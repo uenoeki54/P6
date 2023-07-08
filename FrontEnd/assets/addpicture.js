@@ -88,11 +88,8 @@ title.addEventListener("focus", () => {
     testChamps();
 })
 
-//ON ESSAYE D U PLOADER UN NOUVEAU PROJET AU CLICK SUR LE BOUTON
-
-uploadForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-    console.log('vous avez cliqued pour soumettre le formulaire');
+//On declare la fonction d"upload
+function uploadTry() {
     let uploadPicture = picture.files[0];
     let uploadTitle = title.value;
     let uploadCategory = category.value;
@@ -100,21 +97,67 @@ uploadForm.addEventListener('submit', (e) => {
     formData.append('image', uploadPicture)
     formData.append('title', uploadTitle)
     formData.append('category', uploadCategory)
-
-
     uploadProject(formData)
         .then((response) => response.json())
-        .then(valider => {
-            if (valider) {
-                console.log("ok")
+        .then(payload => {
+            if (payload) {
+                console.log("projet envoyé")
+                //AJOUT DE LA NOUVELLE IMAGE DANS LE PORTFOLIO SANS RAFRAICHISSEMENT
+                const newFigure = document.createElement("figure");
+                const newPic = document.createElement("img");
+                //c est dans payload qu on va retrouver tous les attributs de notre peojets, a reintegrer dans le DOM
+                newPic.src = payload.imageUrl;
+                newFigure.appendChild(newPic);
+                
+                //ON REVIENT VERS LE PORTFOLIO CAR IL FAUT AUSSI UN CAPTION
+                //on va aussi chercher le titre dans le payload
+                const newCaption = document.createElement("figcaption")
+                newCaption.innerText = payload.title;
+                newFigure.appendChild(newCaption);
+                //on rajoute cet element figure parfaitement rempli dans la gallerie
+                newFigure.setAttribute('class', 'number' + payload.id);
+                document.querySelector(".gallery").appendChild(newFigure);
+                //on vide le formulaire 
+                // effacement  des vignettes de la deuxieme modale et reaffichage du champ d'upload 
+                const imagePreviewErase = document.querySelector('#image-preview');
+                console.log(imagePreviewErase);
+                if (imagePreviewErase !== null) {
+                    imagePreviewErase.remove();
+                }
+                document.getElementById('image-input').classList.remove('hide-modal-elements');
+                //AJOUT DE LA NOUVELLE IMAGE DANS LA MODALE 1 SANS RAFRAICHISSEMENT - ON RECOMMENCE LA MEME CHOSE
+                const newThumbnail = document.createElement("figure");
+                const newMiniPic = document.createElement("img");
+                newMiniPic.src = payload.imageUrl;
+               
+                //(IL NOUS FAUT AUSSI UN PETIT CAPTION GENERIQUE ET UNE CROIX ID  ETC)
+                newThumbnail.innerHTML = '<div class="chaos-star"><i class="fa-solid fa-arrows-up-down-left-right"></i></div><div class="thrash js-thrash"><i class="fa-solid fa-trash-can js-thrash"></i></div>'
+                newThumbnail.appendChild(newMiniPic);
+                const figCaption = document.createElement("figcaption")
+                figCaption.innerText = "éditer";
+                newThumbnail.appendChild(figCaption);
+                newThumbnail.setAttribute('id', payload.id);
+                document.querySelector(".gallery-modal").appendChild(newThumbnail);
+
+                //on vide les champs dans le formulaire
+                document.getElementById("image-input").value = "";
+                document.getElementById("title").value = ""
+                
+
             } else {
                 console.log("error")
             }
         }
         )
-}
+};
+//ON ESSAYE D U PLOADER UN NOUVEAU PROJET AU CLICK SUR LE BOUTON
 
-);
+uploadForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    console.log('vous avez cliqued pour soumettre le formulaire');
+    uploadTry();
+});
+
 
 
 
