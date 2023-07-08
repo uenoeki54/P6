@@ -17,7 +17,7 @@ document.getElementById("new-project-form").appendChild(
         console.log("Done");
     })
 );*/
-
+const uploadMessage = document.getElementById("upload-message");
 const imageInput = document.getElementById('image-input');
 //variable globale
 var uploadedImage = "";
@@ -63,6 +63,7 @@ async function uploadProject(formData) {
 // fonction pour tester les CHAMPS
 
 function testChamps() {
+    uploadMessage.innerText = "";
     let uploadPicture = picture.files[0];
     let uploadTitle = title.value;
     console.log('valeur de l image' + uploadPicture);
@@ -98,9 +99,16 @@ function uploadTry() {
     formData.append('title', uploadTitle)
     formData.append('category', uploadCategory)
     uploadProject(formData)
-        .then((response) => response.json())
+        .then(response => {
+            if (!response.ok) {
+                throw Error(response.status);
+            }
+            return response.json();
+        })
         .then(payload => {
             if (payload) {
+                console.log(payload.title)
+                console.log(payload.imageURL)
                 console.log("projet envoyé")
                 //AJOUT DE LA NOUVELLE IMAGE DANS LE PORTFOLIO SANS RAFRAICHISSEMENT
                 const newFigure = document.createElement("figure");
@@ -108,7 +116,7 @@ function uploadTry() {
                 //c est dans payload qu on va retrouver tous les attributs de notre peojets, a reintegrer dans le DOM
                 newPic.src = payload.imageUrl;
                 newFigure.appendChild(newPic);
-                
+
                 //ON REVIENT VERS LE PORTFOLIO CAR IL FAUT AUSSI UN CAPTION
                 //on va aussi chercher le titre dans le payload
                 const newCaption = document.createElement("figcaption")
@@ -129,7 +137,7 @@ function uploadTry() {
                 const newThumbnail = document.createElement("figure");
                 const newMiniPic = document.createElement("img");
                 newMiniPic.src = payload.imageUrl;
-               
+
                 //(IL NOUS FAUT AUSSI UN PETIT CAPTION GENERIQUE ET UNE CROIX ID  ETC)
                 newThumbnail.innerHTML = '<div class="chaos-star"><i class="fa-solid fa-arrows-up-down-left-right"></i></div><div class="thrash js-thrash"><i class="fa-solid fa-trash-can js-thrash"></i></div>'
                 newThumbnail.appendChild(newMiniPic);
@@ -142,13 +150,32 @@ function uploadTry() {
                 //on vide les champs dans le formulaire
                 document.getElementById("image-input").value = "";
                 document.getElementById("title").value = ""
-                
-
-            } else {
-                console.log("error")
+                //MESSAGE DE SUCCES
+                uploadMessage.classList.remove("error-color");
+                uploadMessage.classList.add("success-color");
+                uploadMessage.innerText = "Image uploadée avec succès";
+                console.log("succes");  
             }
-        }
-        )
+        }).catch(error => {
+            const errorCode = error.message;
+            if (errorCode === '500' || errorCode === '400') {
+                uploadMessage.classList.add("error-color");
+                uploadMessage.classList.remove("success-color");
+                uploadMessage.innerText = "Erreur lors de l'upload de l'image, veuillez à bien renseigner un titre et à bien selectionner une image valide";
+            }
+            else if (errorCode === '401') {
+                uploadMessage.classList.add("error-color");
+                uploadMessage.classList.remove("success-color");
+                uploadMessage.innerText = "Accès restreint";
+            }
+            else {
+                uploadMessage.classList.add("error-color");
+                uploadMessage.classList.remove("success-color");
+                uploadMessage.innerText = "Erreur serveur";
+            }
+        })
+
+
 };
 //ON ESSAYE D U PLOADER UN NOUVEAU PROJET AU CLICK SUR LE BOUTON
 

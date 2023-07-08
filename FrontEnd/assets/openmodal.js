@@ -3,6 +3,10 @@ let target = null
 
 const openModal = function (e) {
     e.preventDefault();
+    //on efface le message de succes eventuel d ajout d image
+    const uploadMessage = document.getElementById("upload-message");
+    uploadMessage.innerText = "";
+    //...
     target = document.querySelector(e.target.getAttribute('href'));
     console.log(target);
     //affichage de la modale avec visibility; visible!important dans le css
@@ -19,12 +23,7 @@ const openModal = function (e) {
      document.querySelector('.js-line').classList.remove("hide-modal-elements");
      //On cache le formulaire d'ajout d image
      document.querySelector('#new-project-form').classList.add("hide-modal-elements");
-     //reaffichage EVENTUEL du champ d'upload et effacement eventuel des vignettes de la deuxieme modale
-     const imagePreviewErase = document.querySelector('#image-preview');
-     console.log(imagePreviewErase);
-     if (imagePreviewErase !== null){
-     imagePreviewErase.remove();}
-     document.getElementById('image-input').classList.remove('hide-modal-elements');
+     
     //accessibilité pour ceux qui ont un lecteur d'ecran
     target.removeAttribute('aria-hidden');
     target.setAttribute('aria-modal', true);

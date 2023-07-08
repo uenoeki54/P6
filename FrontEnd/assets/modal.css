@@ -163,6 +163,18 @@ figure:hover .chaos-star {
     margin-left: auto;
 }
 
+#upload-message {
+    font-weight: 700;
+    font-size: 20px;
+}
+
+.error-color {
+    color:red!important;
+}
+.success-color {
+    color:#1D6154!important;
+}
+
 .add-project-btn {
     width: 179px;
     height: 36px;
