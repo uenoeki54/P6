@@ -23,6 +23,8 @@ const openModal = function (e) {
      document.querySelector('.js-line').classList.remove("hide-modal-elements");
      //On cache le formulaire d'ajout d image
      document.querySelector('#new-project-form').classList.add("hide-modal-elements");
+     //On cache la fleche
+     document.querySelector('.js-modal-back').classList.add("hide-modal-elements");
      
     //accessibilité pour ceux qui ont un lecteur d'ecran
     target.removeAttribute('aria-hidden');
@@ -70,13 +72,37 @@ const changeModal = function (e) {
     if (thumbnailToClean !== null) {
     thumbnailToClean.remove();
     }
+
+    //On affiche la fleche
+    document.querySelector('.js-modal-back').classList.remove("hide-modal-elements");
     //on remet l icone et le bouton et le texte
-    document.getElementById('image-input').classList.remove('hide-modal-elements');
+    document.getElementById('label-input').classList.remove('hide-modal-elements');
     document.querySelector(".fa-image").classList.remove('hide-modal-elements');
     document.getElementById('image-input-size').classList.remove('hide-modal-elements');
     //on remet eventuellement le bouton en gris et on le desactive
     document.querySelector(".add-project-btn").classList.add("add-project-button-inactive");
     document.querySelector(".add-project-btn").setAttribute('disabled', '');
+}
+
+const backModal = function(e) {
+    e.preventDefault();
+     //on efface le message de succes eventuel d ajout d image
+     const uploadMessage = document.getElementById("upload-message");
+     uploadMessage.innerText = "";
+      //affichage du titre 
+    document.querySelector('#js-modal-title').innerText = "Galerie photo";
+    //reaffichage eventuel de la gallerie au cas ou on aurait utilise la modale ajout projet
+    document.querySelector('.gallery-modal').classList.remove("hide-modal-elements");
+    //reaffichage eventuel du lien en bas  au cas ou on aurait utilise la modale ajout projet
+    document.querySelector('.js-remove-gallery').classList.remove("hide-modal-elements");
+     //reaffichage eventuel du bouton qui lance la deuxieme modale
+     document.querySelector('.js-add-project').classList.remove("hide-modal-elements");
+     //reaffichage eventuel du hr 
+     document.querySelector('.js-line').classList.remove("hide-modal-elements");
+     //On cache le formulaire d'ajout d image
+     document.querySelector('#new-project-form').classList.add("hide-modal-elements");
+     //On cache la fleche
+     document.querySelector('.js-modal-back').classList.add("hide-modal-elements");
 }
 const stopPropagation = function(e) {
     e.stopPropagation()
@@ -86,6 +112,10 @@ const stopPropagation = function(e) {
 document.querySelectorAll('.js-modal').forEach(a => {
     a.addEventListener('click', openModal)
 })
+
+//on reviens vers la premiere modale au click sur la fleche gauche
+document.querySelector('.js-modal-back').addEventListener('click',backModal);
+
 
 //on va cherche le bouton ajouter projet et on lui fait changer la modale
 document.querySelector('.js-add-project').addEventListener('click',changeModal);

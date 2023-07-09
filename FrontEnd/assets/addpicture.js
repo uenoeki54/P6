@@ -1,6 +1,7 @@
 
 const uploadMessage = document.getElementById("upload-message");
-const imageInput = document.getElementById('image-input');
+const labelInput = document.getElementById("label-input");
+const imageInput= document.getElementById("image-input");
 const iconePaysage = document.querySelector(".fa-image");
 const imageInputSize = document.getElementById('image-input-size');
 //variable globale
@@ -10,7 +11,7 @@ imageInput.addEventListener('change', function () {
     var reader = new FileReader();
     reader.addEventListener('load', () => {
         //on cache le input et l icone et le texte pour correspondre a la maquette
-        imageInput.classList.add('hide-modal-elements');
+        labelInput.classList.add('hide-modal-elements');
         iconePaysage.classList.add('hide-modal-elements');
         imageInputSize.classList.add('hide-modal-elements');
         //on affiche la preview
@@ -71,7 +72,7 @@ function testChamps() {
         if (imagePreviewErase !== null) {
             imagePreviewErase.remove();
         }
-        document.getElementById('image-input').classList.remove('hide-modal-elements');
+        document.getElementById('label-input').classList.remove('hide-modal-elements');
         document.querySelector(".fa-image").classList.remove('hide-modal-elements');
         imageInputSize.classList.remove('hide-modal-elements');
     }
@@ -143,7 +144,7 @@ function uploadTry() {
                 if (imagePreviewErase !== null) {
                     imagePreviewErase.remove();
                 }
-                document.getElementById('image-input').classList.remove('hide-modal-elements');
+                document.getElementById('label-input').classList.remove('hide-modal-elements');
                 document.querySelector(".fa-image").classList.remove('hide-modal-elements');
                 imageInputSize.classList.remove('hide-modal-elements');
                 //AJOUT DE LA NOUVELLE IMAGE DANS LA MODALE 1 SANS RAFRAICHISSEMENT - ON RECOMMENCE LA MEME CHOSE

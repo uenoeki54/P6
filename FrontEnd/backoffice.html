@@ -86,6 +86,7 @@
             <aside id="modal" class="modal modal-closed" aria-hidden="true" role="dialog" aria-modal="false">
                 <div id="modal-wrapper" class="js-modal-stop">
                     <i class="js-modal-close fa-solid fa-xmark"></i>
+                    <i class="js-modal-back fa-solid fa-arrow-left"></i>
                     <h1 id="js-modal-title"></h1>
                     <div class="gallery-modal js-gallery-modal">
                     </div>
@@ -96,7 +97,10 @@
 
                         <div id="display-image">
                             <i class="fa-regular fa-image"></i>
-                            <input id="image-input" type="file" accept=".png, .jpg, .jpeg">
+                            <label for="image-input" id="label-input"   class="custom-file-upload">
+                                + Ajouter photo
+                            </label>
+                            <input id="image-input" type="file" accept=".png, .jpg, .jpeg" class="hide-modal-elements">
                             <div id="image-input-size">jpg, png : 4mo max</div>
                         </div>
                         <label for="titre">Nom</label>
