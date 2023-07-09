@@ -48,7 +48,7 @@ const closeModal = function(e) {
     
     
 }
-//Au lieu d ouvrir uen nouvelel modale on reste dan sla meme mais on change le DOM depuis le JS
+//Au lieu d'ouvrir une nouvelle modale on reste dan sla meme mais on change le DOM depuis le JS
 const changeModal = function (e) {
     e.preventDefault();
     console.log("bouton bien cliquer");
@@ -63,10 +63,20 @@ const changeModal = function (e) {
     document.querySelector('#new-project-form').classList.remove("hide-modal-elements");
     //on vide les champs dans le formulaire
     document.getElementById("image-input").value = "";
-    document.getElementById("title").value = ""
-    //on remet eventuellement le bouton en gris
+    document.getElementById("title").value = "";
+    //on enleve l'image preview SI IL Y EN A UNE 
+    const thumbnailToClean = document.getElementById("image-preview");
+    console.log(thumbnailToClean);
+    if (thumbnailToClean !== null) {
+    thumbnailToClean.remove();
+    }
+    //on remet l icone et le bouton et le texte
+    document.getElementById('image-input').classList.remove('hide-modal-elements');
+    document.querySelector(".fa-image").classList.remove('hide-modal-elements');
+    document.getElementById('image-input-size').classList.remove('hide-modal-elements');
+    //on remet eventuellement le bouton en gris et on le desactive
     document.querySelector(".add-project-btn").classList.add("add-project-button-inactive");
-
+    document.querySelector(".add-project-btn").setAttribute('disabled', '');
 }
 const stopPropagation = function(e) {
     e.stopPropagation()

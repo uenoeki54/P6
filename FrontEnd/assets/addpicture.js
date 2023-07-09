@@ -1,32 +1,18 @@
-/*
-function selectImage(afterSelection) {
-    const inputFile = document.getElementById('input-file');
-    inputFile.addEventListener('change', function () {
-        if (afterSelection) {
 
-            afterSelection(inputFile);
-        }
-    });
-    return inputFile;
-}
-
-document.getElementById("new-project-form").appendChild(
-    selectImage(function (inputFile) {
-        var reader = new FileReader();
-        reader.readAsDataURL(inputFile.files[0]);
-        console.log("Done");
-    })
-);*/
 const uploadMessage = document.getElementById("upload-message");
 const imageInput = document.getElementById('image-input');
+const iconePaysage = document.querySelector(".fa-image");
+const imageInputSize = document.getElementById('image-input-size');
 //variable globale
 var uploadedImage = "";
-
+// PREVIEW DU THUMBNAIL DE L IMAGE A UPLOADER
 imageInput.addEventListener('change', function () {
     var reader = new FileReader();
     reader.addEventListener('load', () => {
-        //on cache le input pour correspondre a la maquette
+        //on cache le input et l icone et le texte pour correspondre a la maquette
         imageInput.classList.add('hide-modal-elements');
+        iconePaysage.classList.add('hide-modal-elements');
+        imageInputSize.classList.add('hide-modal-elements');
         //on affiche la preview
         const imagePreview = document.createElement('img');
         imagePreview.src = reader.result;
@@ -48,6 +34,8 @@ const uploadButton = document.querySelector(".add-project-btn");
 //acces au token dans le local storage
 const token = localStorage.getItem('Token');
 var formData = new FormData();
+
+
 //DEFINITION DE LA FONCTION D'UPLOAD APRES ON LA DEPLACERA PEUT ETRE 
 async function uploadProject(formData) {
     return fetch('http://localhost:5678/api/works', {
@@ -60,19 +48,42 @@ async function uploadProject(formData) {
 }
 
 
-// fonction pour tester les CHAMPS
-
+// FONCTION POUR TESTER LES CHAMPS
 function testChamps() {
     uploadMessage.innerText = "";
-    let uploadPicture = picture.files[0];
-    let uploadTitle = title.value;
-    console.log('valeur de l image' + uploadPicture);
-    console.log('valeur du titre' + uploadTitle);
-    if (uploadPicture !== undefined && uploadTitle !== "") {
+    const uploadPicture = picture.files[0];
+    const uploadTitle = title.value;
+    //const pictureSize = picture.files[0].size;
+    const maxSize = 4 * 1024 * 1024;
+    if (picture.files[0] !== undefined) {
+        var pictureSize = picture.files[0].size;
+    } else { var pictureSize = 0};
+
+    console.log('valeur de l image: ' + uploadPicture);
+    console.log('valeur du titre: ' + uploadTitle);
+    console.log('taille de l image: ' + pictureSize);
+    if (pictureSize > maxSize) {
+        uploadMessage.classList.add("error-color");
+        uploadMessage.classList.remove("success-color");
+        uploadMessage.innerText = "Taille de l'image supérieure a 4 mégas";
+        const imagePreviewErase = document.querySelector('#image-preview');
+        console.log(imagePreviewErase);
+        if (imagePreviewErase !== null) {
+            imagePreviewErase.remove();
+        }
+        document.getElementById('image-input').classList.remove('hide-modal-elements');
+        document.querySelector(".fa-image").classList.remove('hide-modal-elements');
+        imageInputSize.classList.remove('hide-modal-elements');
+    }
+
+    if (uploadPicture !== undefined && uploadTitle !== "" && pictureSize <= maxSize) {
         uploadButton.classList.remove("add-project-button-inactive");
+        uploadButton.removeAttribute('disabled');
+        uploadMessage.innerText = "";
     }
     else {
         uploadButton.classList.add("add-project-button-inactive");
+        uploadButton.setAttribute('disabled', '');
     }
 }
 title.addEventListener("change", () => {
@@ -126,13 +137,15 @@ function uploadTry() {
                 newFigure.setAttribute('class', 'number' + payload.id);
                 document.querySelector(".gallery").appendChild(newFigure);
                 //on vide le formulaire 
-                // effacement  des vignettes de la deuxieme modale et reaffichage du champ d'upload 
+                // effacement  des vignettes de la deuxieme modale et reaffichage du champ d'upload et icone
                 const imagePreviewErase = document.querySelector('#image-preview');
                 console.log(imagePreviewErase);
                 if (imagePreviewErase !== null) {
                     imagePreviewErase.remove();
                 }
                 document.getElementById('image-input').classList.remove('hide-modal-elements');
+                document.querySelector(".fa-image").classList.remove('hide-modal-elements');
+                imageInputSize.classList.remove('hide-modal-elements');
                 //AJOUT DE LA NOUVELLE IMAGE DANS LA MODALE 1 SANS RAFRAICHISSEMENT - ON RECOMMENCE LA MEME CHOSE
                 const newThumbnail = document.createElement("figure");
                 const newMiniPic = document.createElement("img");
@@ -147,14 +160,16 @@ function uploadTry() {
                 newThumbnail.setAttribute('id', payload.id);
                 document.querySelector(".gallery-modal").appendChild(newThumbnail);
 
-                //on vide les champs dans le formulaire
+                //on vide les champs dans le formulaire et on le desactive
                 document.getElementById("image-input").value = "";
                 document.getElementById("title").value = ""
+                uploadButton.classList.add("add-project-button-inactive");
+                document.querySelector(".add-project-btn").setAttribute('disabled', '');
                 //MESSAGE DE SUCCES
                 uploadMessage.classList.remove("error-color");
                 uploadMessage.classList.add("success-color");
                 uploadMessage.innerText = "Image uploadée avec succès";
-                console.log("succes");  
+                console.log("succes");
             }
         }).catch(error => {
             const errorCode = error.message;
@@ -182,6 +197,7 @@ function uploadTry() {
 uploadForm.addEventListener('submit', (e) => {
     e.preventDefault();
     console.log('vous avez cliqued pour soumettre le formulaire');
+
     uploadTry();
 });
 
