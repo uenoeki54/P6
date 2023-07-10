@@ -4,7 +4,12 @@ import { genererProjets } from "./fonctions.js";
 const reponse = await fetch('http://localhost:5678/api/works');
 let projets = await reponse.json();
 
-// Creation de la fonction qui cree les projets au bon endroit depuis le back
+// Verification token est bien la 
+const token = localStorage.getItem('Token');
+console.log('valeur token est de : ' + token);
+if (token === null) {
+    window.location.replace("index.html");
+}
 
 // Appel de la fonction 
 genererProjets(projets)
