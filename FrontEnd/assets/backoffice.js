@@ -8,3 +8,12 @@ let projets = await reponse.json();
 
 // Appel de la fonction 
 genererProjets(projets)
+
+//logout
+
+document.getElementById('js-logout').addEventListener('click', function(e) {
+    e.preventDefault();
+    window.localStorage.removeItem("Token");  
+    window.location.replace("index.html");
+
+});
