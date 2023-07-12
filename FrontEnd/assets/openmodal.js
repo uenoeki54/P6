@@ -8,7 +8,6 @@ const openModal = function (e) {
     uploadMessage.innerText = "";
     //...
     target = document.querySelector(e.target.getAttribute('href'));
-    console.log(target);
     //affichage de la modale avec visibility; visible!important dans le css
     target.classList.remove("modal-closed");
     //affichage du titre 
@@ -50,10 +49,9 @@ const closeModal = function(e) {
     
     
 }
-//Au lieu d'ouvrir une nouvelle modale on reste dan sla meme mais on change le DOM depuis le JS
+//Au lieu d'ouvrir une nouvelle modale on reste dans la meme mais on change le DOM depuis le JS
 const changeModal = function (e) {
     e.preventDefault();
-    console.log("bouton bien cliquer");
     document.querySelector('.gallery-modal').classList.add("hide-modal-elements");
     document.querySelector('.js-remove-gallery').classList.add("hide-modal-elements");
     document.querySelector('#js-modal-title').innerText = "Ajout photo";
@@ -66,6 +64,7 @@ const changeModal = function (e) {
     //on vide les champs dans le formulaire
     document.getElementById("image-input").value = "";
     document.getElementById("title").value = "";
+    document.getElementById("category").value = "";
     //on enleve l'image preview SI IL Y EN A UNE 
     const thumbnailToClean = document.getElementById("image-preview");
     console.log(thumbnailToClean);

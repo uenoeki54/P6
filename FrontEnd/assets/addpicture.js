@@ -54,6 +54,7 @@ function testChamps() {
     uploadMessage.innerText = "";
     const uploadPicture = picture.files[0];
     const uploadTitle = title.value;
+    const uploadCategory = category.value;
     //const pictureSize = picture.files[0].size;
     const maxSize = 4 * 1024 * 1024;
     if (picture.files[0] !== undefined) {
@@ -63,6 +64,7 @@ function testChamps() {
     console.log('valeur de l image: ' + uploadPicture);
     console.log('valeur du titre: ' + uploadTitle);
     console.log('taille de l image: ' + pictureSize);
+    console.log('categorie de l image: ' + uploadCategory);
     if (pictureSize > maxSize) {
         uploadMessage.classList.add("error-color");
         uploadMessage.classList.remove("success-color");
@@ -77,7 +79,7 @@ function testChamps() {
         imageInputSize.classList.remove('hide-modal-elements');
     }
 
-    if (uploadPicture !== undefined && uploadTitle !== "" && pictureSize <= maxSize) {
+    if (uploadPicture !== undefined && uploadTitle !== "" && pictureSize <= maxSize && uploadCategory !== "") {
         uploadButton.classList.remove("add-project-button-inactive");
         uploadButton.removeAttribute('disabled');
         uploadMessage.innerText = "";
@@ -87,6 +89,9 @@ function testChamps() {
         uploadButton.setAttribute('disabled', '');
     }
 }
+
+//ADDEVENT LISTENERS POUR TESTER ES CHAMPS DES QUE QUELQUECHOSE BOUGE
+
 title.addEventListener("change", () => {
     testChamps();
 })
@@ -100,6 +105,10 @@ title.addEventListener("keydown", () => {
 title.addEventListener("focus", () => {
     testChamps();
 })
+
+document.getElementById('category').addEventListener("change", () => {
+    testChamps();
+  });
 
 //On declare la fonction d"upload
 function uploadTry() {
@@ -177,7 +186,7 @@ function uploadTry() {
             if (errorCode === '500' || errorCode === '400') {
                 uploadMessage.classList.add("error-color");
                 uploadMessage.classList.remove("success-color");
-                uploadMessage.innerText = "Erreur lors de l'upload de l'image, veuillez à bien renseigner un titre et à bien selectionner une image valide";
+                uploadMessage.innerText = "Erreur lors de l'upload de l'image, veuillez à bien renseigner un titre, à bien selectionner une image valide et à sélectionner une categorie ";
             }
             else if (errorCode === '401') {
                 uploadMessage.classList.add("error-color");
@@ -201,6 +210,8 @@ uploadForm.addEventListener('submit', (e) => {
 
     uploadTry();
 });
+
+
 
 
 

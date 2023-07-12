@@ -135,7 +135,9 @@ select {
     line-height: 16.42px;
 }
 
-
+#new-project-form hr {
+    width: 100%!important;
+}
 
 
 /* END MISE EN PAGE UPLOAD */
