@@ -1,6 +1,5 @@
 //import de la fonction d'affichage
 import { genererProjetsModal } from "./fonctions.js";
-import { genererProjets } from "./fonctions.js";
 
 // Récupération de tous les PROJETS PHOTO depuis l'API
 let reponse = await fetch('http://localhost:5678/api/works');
@@ -36,8 +35,6 @@ galleryModal.addEventListener('click', (event) => {
                 if (res.ok) {
                     //efface le projet supprimed du DOM
                     figure.innerHTML = "";
-
-
                     /*efface le projet dans le DOM de l apage d acceuil
                    */
                 const figureBack = document.querySelector('.number' + projectId);
@@ -45,15 +42,7 @@ galleryModal.addEventListener('click', (event) => {
                 } else {
                     console.error('erreur dans la suppression de l element');
                 }
-            })/*.then(response => {
-                return response.json();
-            }).then(payload => { 
-                console.log(payload);
-                const projects = payload;
-                console.log(projects);
-                genererProjets(projects);
-            
-        })*/
+            })
 
     }
 })

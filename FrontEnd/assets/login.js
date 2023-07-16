@@ -62,10 +62,7 @@ function loginTry() {
                 localStorage.setItem("Token", token);
                 if (token) {
                     window.location.href = "./backoffice.html";
-                    console.log('BRAVO');
-                } /*else {
-                errorMessage.classList.add("display-yes");
-            }*/
+                } 
             }).catch(error => {
                 const errorCode = error.message;
                 if (errorCode === '404' || errorCode === '401') {

@@ -1,7 +1,7 @@
 
 const uploadMessage = document.getElementById("upload-message");
 const labelInput = document.getElementById("label-input");
-const imageInput= document.getElementById("image-input");
+const imageInput = document.getElementById("image-input");
 const iconePaysage = document.querySelector(".fa-image");
 const imageInputSize = document.getElementById('image-input-size');
 //variable globale
@@ -34,10 +34,10 @@ const category = document.getElementById("category");
 const uploadButton = document.querySelector(".add-project-btn");
 //acces au token dans le local storage
 const token = localStorage.getItem('Token');
-var formData = new FormData();
 
 
-//DEFINITION DE LA FONCTION D'UPLOAD APRES ON LA DEPLACERA PEUT ETRE 
+
+//DEFINITION DE LA FONCTION UPLOAD PROJECT APRES ON LA DEPLACERA PEUT ETRE 
 async function uploadProject(formData) {
     return fetch('http://localhost:5678/api/works', {
         method: 'POST',
@@ -59,7 +59,7 @@ function testChamps() {
     const maxSize = 4 * 1024 * 1024;
     if (picture.files[0] !== undefined) {
         var pictureSize = picture.files[0].size;
-    } else { var pictureSize = 0};
+    } else { var pictureSize = 0 };
 
     console.log('valeur de l image: ' + uploadPicture);
     console.log('valeur du titre: ' + uploadTitle);
@@ -108,7 +108,7 @@ title.addEventListener("focus", () => {
 
 document.getElementById('category').addEventListener("change", () => {
     testChamps();
-  });
+});
 
 //On declare la fonction d"upload
 function uploadTry() {
@@ -134,7 +134,7 @@ function uploadTry() {
                 //AJOUT DE LA NOUVELLE IMAGE DANS LE PORTFOLIO SANS RAFRAICHISSEMENT
                 const newFigure = document.createElement("figure");
                 const newPic = document.createElement("img");
-                //c est dans payload qu on va retrouver tous les attributs de notre peojets, a reintegrer dans le DOM
+                //c est dans payload qu on va retrouver tous les attributs de notre projet, a reintegrer dans le DOM
                 newPic.src = payload.imageUrl;
                 newFigure.appendChild(newPic);
 
@@ -207,10 +207,14 @@ function uploadTry() {
 uploadForm.addEventListener('submit', (e) => {
     e.preventDefault();
     console.log('vous avez cliqued pour soumettre le formulaire');
-
     uploadTry();
 });
-
+fieldEmail.addEventListener("keydown", (e) => {
+    if (e.key === "Enter") {
+        console.log('vous avez cliqued pour soumettre le formulaire');
+        uploadTry();
+    }
+});
 
 
 

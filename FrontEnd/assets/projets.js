@@ -29,7 +29,7 @@ btnApparts.addEventListener("click", function () {
     });
     genererProjets(projetsFiltres)
 })
-// Categorie APPARTS
+// Categorie HOTELS 
 const btnHotels = document.getElementById("btn-hotels")
 btnHotels.addEventListener("click", function () {
     const projetsFiltres = projets.filter(function (projet) {

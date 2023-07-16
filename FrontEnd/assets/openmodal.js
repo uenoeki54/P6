@@ -8,7 +8,7 @@ const openModal = function (e) {
     uploadMessage.innerText = "";
     //...
     target = document.querySelector(e.target.getAttribute('href'));
-    //affichage de la modale avec visibility; visible!important dans le css
+    //AFFICHAGE DE LA MODALE
     target.classList.remove("modal-closed");
     //affichage du titre 
     document.querySelector('#js-modal-title').innerText = "Galerie photo";
@@ -83,6 +83,7 @@ const changeModal = function (e) {
     document.querySelector(".add-project-btn").setAttribute('disabled', '');
 }
 
+//Code poru repasser de la modale "ajout projet" a la modale "enlever projet"
 const backModal = function(e) {
     e.preventDefault();
      //on efface le message de succes eventuel d ajout d image

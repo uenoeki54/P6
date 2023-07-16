@@ -6,7 +6,6 @@ let projets = await reponse.json();
 
 // Verification token est bien la 
 const token = localStorage.getItem('Token');
-console.log('valeur token est de : ' + token);
 if (token === null) {
     window.location.replace("index.html");
 }
